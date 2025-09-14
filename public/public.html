@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OhioFiles - Public</title>
+    <link rel="stylesheet" href="https://unpkg.com/chota@latest">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="https://o.ohiofiles.live/logonew.png" type="image/x-icon">
+</head>
+<body>
+    <script>
+      // Apply saved theme from localStorage
+      const savedTheme = localStorage.getItem('theme') || 'amoled';
+      document.addEventListener('DOMContentLoaded', function() {
+        document.body.className = savedTheme;
+      });
+    </script>
+    
+    <!-- Notification Bar -->
+    <div id="notification-bar" class="notification-bar hidden">
+        <div class="notification-content">
+            <span id="notification-message"></span>
+        </div>
+    </div>
+    
+    <div class="container">
+        <header>
+ 	    <a href="/" style="text-decoration: none; color: inherit;">
+  		<h1>OhioFiles</h1>
+            </a>
+            <nav>
+                <a href="https://ohiofiles.live">Home</a>
+                <a href="#" id="public-tab" class="active">Public Files</a>
+            </nav>
+        </header>
+        <main>
+            <section id="public-section">
+                
+                <ul id="public-files-list"></ul>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-links">
+                    <button id="legal-info-btn" class="footer-btn">Legal Information</button>
+                    <span class="footer-separator">•</span>
+                    <a href="https://t.me/ohiofiles" target="_blank" rel="noopener noreferrer" class="footer-btn telegram-btn">
+                        <svg class="telegram-icon" viewBox="0 0 24 24" width="16" height="16">
+                            <path fill="currentColor" d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+                        </svg>
+                        Telegram
+                    </a>
+                    <span class="footer-separator">•</span>
+                    <span class="footer-text">© 2025 OhioFiles - Secure File Hosting</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    <!-- Legal Information Modal -->
+    <div id="legal-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Legal Information & Terms of Service</h2>
+                <button id="close-legal-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="legal-section">
+                    <h3>📋 Terms of Service</h3>
+                    <p><strong>Last Updated:</strong> July 23, 2025</p>
+                    <p>By using OhioFiles, you agree to comply with and be bound by the following terms and conditions:</p>
+                    
+                    <h4>1. Acceptable Use</h4>
+                    <ul>
+                        <li>You may only upload files that you own or have legal rights to distribute</li>
+                        <li>Files must comply with all applicable laws and regulations</li>
+                        <li>Prohibited content includes: malware, viruses, illegal content, copyrighted material without permission, adult content, harassment material</li>
+                        <li>Maximum file size: 100MB per upload</li>
+                        <li>Files may be automatically deleted after periods of inactivity</li>
+                    </ul>
+                    
+                    <h4>2. File Storage & Retention</h4>
+                    <ul>
+                        <li>Files are stored securely but we cannot guarantee permanent availability</li>
+                        <li>We reserve the right to remove files that violate our terms</li>
+                        <li>Users are responsible for maintaining backups of important files</li>
+                        <li>Storage is provided on a best-effort basis</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h3>🔒 Privacy Policy</h3>
+                    
+                    <h4>Information We Collect</h4>
+                    <ul>
+                        <li><strong>File Data:</strong> Files you upload, filenames, file sizes, upload timestamps</li>
+                        <li><strong>Session Data:</strong> Session keys for cross-device synchronization (stored locally)</li>
+                        <li><strong>Technical Data:</strong> IP addresses, browser information, access logs</li>
+                        <li><strong>Usage Data:</strong> Upload patterns, file access statistics (anonymized)</li>
+                    </ul>
+                    
+                    <h4>How We Use Information</h4>
+                    <ul>
+                        <li>Provide file hosting and sharing services</li>
+                        <li>Maintain system security and prevent abuse</li>
+                        <li>Improve service performance and reliability</li>
+                        <li>Generate anonymous usage statistics</li>
+                    </ul>
+                    
+                    <h4>Data Sharing</h4>
+                    <ul>
+                        <li>We do not sell or share personal data with third parties</li>
+                        <li>Data may be disclosed if required by law or to protect our rights</li>
+                        <li>Public files are accessible to anyone with the link</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h3>⚖️ Disclaimer & Limitations</h3>
+                    
+                    <h4>Service Availability</h4>
+                    <ul>
+                        <li>Service is provided "as is" without warranties of any kind</li>
+                        <li>We do not guarantee 100% uptime or data availability</li>
+                        <li>Maintenance may require temporary service interruptions</li>
+                    </ul>
+                    
+                    <h4>Limitation of Liability</h4>
+                    <ul>
+                        <li>We are not liable for data loss, service interruptions, or damages</li>
+                        <li>Users upload files at their own risk</li>
+                        <li>Maximum liability is limited to the fees paid (if any)</li>
+                    </ul>
+                    
+                    <h4>Copyright & DMCA</h4>
+                    <ul>
+                        <li>We respect intellectual property rights</li>
+                        <li>Copyright infringement reports will be investigated promptly</li>
+                        <li>Repeat offenders may be permanently banned</li>
+                        <li>DMCA takedown requests: Contact admin through proper channels</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h3>🛡️ Security & Data Protection</h3>
+                    
+                    <h4>Security Measures</h4>
+                    <ul>
+                        <li>Files are stored with secure random filenames</li>
+                        <li>Regular security audits and updates</li>
+                        <li>Protection against common web vulnerabilities</li>
+                        <li>Monitoring for suspicious activities</li>
+                    </ul>
+                    
+                    <h4>User Responsibilities</h4>
+                    <ul>
+                        <li>Keep session keys private and secure</li>
+                        <li>Report security vulnerabilities responsibly</li>
+                        <li>Use strong passwords for sensitive files</li>
+                        <li>Regularly back up important data</li>
+                    </ul>
+                </div>
+                
+                <div class="legal-section">
+                    <h3>📞 Contact & Support</h3>
+                    <p>For questions about these terms, privacy concerns, or to report violations:</p>
+                    <ul>
+                        <li><strong>Service Issues:</strong> Check system status or contact through official channels</li>
+                        <li><strong>Legal Matters:</strong> Send formal notice to our registered address</li>
+                        <li><strong>DMCA Takedowns:</strong> Follow proper DMCA notification procedures</li>
+                        <li><strong>Security Issues:</strong> Report through responsible disclosure</li>
+                    </ul>
+                    
+                    <p><strong>Jurisdiction:</strong> These terms are governed by applicable local laws. Any disputes will be resolved through appropriate legal channels.</p>
+                    
+                    <p><em>By continuing to use OhioFiles, you acknowledge that you have read, understood, and agree to be bound by these terms and conditions.</em></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="accept-legal" class="btn-primary">I Understand</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="public.js"></script>
+</body>
+</html>
